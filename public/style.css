@@ -199,8 +199,8 @@ textarea {
   padding: 25px;
   width: 450px;
   height: 270px;
-  margin-top: 60px;
-  margin-left: 350px;
+  /* margin-top: 30px; */
+  margin-left: 300px;
 }
 
 .modal-open {
