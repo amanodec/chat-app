@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Let's chat</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="user-list">
+        <h2>Currently Chatting</h2>
+        <ul id="userList"></ul>
+      </div>
+    <div class="modal">
+      <h2 class="h2-text">Available Commands</h2>
+      <p class="para"><span class="spann">/help -</span> Show this message</p>
+      <p class="para"><span class="spann">/random -</span> Print a random number</p>
+      <p class="para"><span class="spann">/clear - </span>Clear the chat</p>
+      <button class="okbtn">OK</button>
+    </div>
+    <div class="chat__section">
+      
+      <div class="brand">
+        <!-- <img src="msgg.png" alt="image" class="image" /> -->
+        <h1 class="youchat">Let's Chat</h1>
+      </div>
+
+      <div class="message__area"></div>
+      <div class="text">
+        <textarea
+          id="textarea"
+          cols=20"
+          rows="1"
+          placeholder="Write a message"
+          class="textarea"
+          autofocus
+        ></textarea>
+        <button id="btn">Send</button>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+  </body>
+</html>

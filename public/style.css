@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #e3e3e3;
+  font-family: "Roboto", sans-serif;
+}
+.chat__section {
+  width: 800px;
+  max-width: 90%;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.image {
+  width: 15%;
+  height: 100px;
+  border-radius: 30%;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.brand {
+  padding: 20px;
+  background: #333;
+  display: flex;
+  align-items: center;
+}
+.brand h1 {
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #e3e3e3;
+  margin-left: 10px;
+}
+.message__area {
+  height: 500px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-top: 40px;
+}
+textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  font-size: 16px;
+  outline: none;
+  background: #fbfbfb;
+  resize: none;
+  height: auto;
+}
+
+.message {
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 40px;
+  max-width: 300px;
+  position: relative;
+}
+.incoming {
+  background: #8f8be8;
+  color: #fff;
+}
+.outgoing {
+  background: #e9eafd;
+  color: #787986;
+  margin-left: auto;
+}
+.message h4 {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  color: #333;
+  font-size: 16px;
+}
+.text {
+  display: flex;
+}
+
+.disable {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: none;
+}
+#btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 14px;
+  /* width : 100px;
+    height : 45px;  */
+  border-radius: 5px;
+  transition:  all 0.1s ease-in-out;
+}
+
+#btn:hover {
+  background-color: #525252;
+}
+
+
+@media (max-width: 500px) {
+  .chat__section {
+    height: 60px;
+    margin-bottom: 650px;
+  }
+
+  .image {
+    width: 40px;
+    height: 35px;
+    margin-top: 20px;
+  }
+
+  .textarea {
+    margin-bottom: 80px;
+  }
+
+  #btn {
+    margin-bottom: 80px;
+  }
+
+  h1.youchat {
+    font-size: 13px;
+    color: antiquewhite;
+  }
+
+  body {
+    flex-direction: column;
+  }
+
+  .user-list {
+    display: none;
+  }
+
+  .message__area {
+   background-color: white;
+  }
+}
+
+/* Add this styling for the user list */
+
+.user-list {
+  background: #333;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  flex: 0 0 300px; /* Set the width of the user list */
+  overflow-y: auto;
+  height: 625px;
+  color: white;
+}
+
+.user-list h2 {
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: #e3e3e3;
+}
+
+/* Add this styling for each user item in the list */
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-item img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-item p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.h2-text {
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #e3e3e3;
+  border-radius: 30px;
+  padding: 25px;
+  width: 450px;
+  height: 270px;
+  margin-top: 60px;
+  margin-left: 350px;
+}
+
+.modal-open {
+  background-color: #747474;
+  pointer-events: none;
+}
+
+.para {
+  font-size: 12px;
+  margin: 10px 0 15px 15px;
+}
+
+.okbtn {
+  width: 47px;
+  height: 40px;
+  padding: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e3e3e3;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-top: 65px;
+  margin-right: 10px;
+  transition: all 0.1s ease-in;
+}
+
+.okbtn:hover {
+  cursor: pointer;
+  background: #333;
+  color: #e3e3e3;
+}
+
+.spann {
+  font-weight: 600;
+}
