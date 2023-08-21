@@ -67,11 +67,11 @@ textarea {
   position: relative;
 }
 .incoming {
-  background: #8f8be8;
+  background: #333;
   color: #fff;
 }
 .outgoing {
-  background: #e9eafd;
+  background: #d0d0d1;
   color: #787986;
   margin-left: auto;
 }
@@ -206,6 +206,7 @@ textarea {
 .modal-open {
   background-color: #747474;
   pointer-events: none;
+  opacity: 0.5;
 }
 
 .para {
