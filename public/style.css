@@ -114,8 +114,9 @@ textarea {
   border-right: 1px solid #ccc;
   flex: 0 0 300px; /* Set the width of the user list */
   overflow-y: auto;
-  height: 625px;
+  height: 500px;
   color: white;
+  overflow: auto;
 }
 
 .user-list h2 {
@@ -199,6 +200,17 @@ textarea {
   font-weight: 600;
 }
 
+.chat__header {
+  height: 60px;
+  background-color: #333;
+  color: #e3e3e3;
+  border-bottom: 1px solid #ccc; 
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 600px) {
   .chat__section {
     height: 60px;
@@ -256,4 +268,11 @@ textarea {
     background-color: #333;
     color: #e3e3e3;
   }
+
+  .chat__header {
+    width: 90vw;
+    margin-bottom: 5px;
+  }
 }
+
+

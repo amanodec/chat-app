@@ -3,7 +3,7 @@ const app = express();
 const http = require("http").createServer(app);
 const PORT = process.env.PORT || 3000;
 const path = require("path");
-var public = path.join(__dirname, "/public");
+const public = path.join(__dirname, "/public");
 
 // sending index.html file
 app.get("/", (req, res) => {
@@ -19,13 +19,24 @@ http.listen(PORT, () => {
 });
 
 // Socket
+const io = require("socket.io")(http);
+let onlineUsersCount = 0; // Initialize the online users count
 
-const io = require('socket.io')(http);
+io.on("connection", (socket) => {
+  console.log("connected");
+  onlineUsersCount++; // Increment the online users count
 
-io.on('connection', (socket) => {
-    console.log("connected");
-    // listening on client side
-    socket.on('message', (msg) => {
-        socket.broadcast.emit('message', msg);
-    })
-})
+  // Update online users count for all connected sockets
+  io.emit("updateUserCount", onlineUsersCount);
+
+  // listening on client side
+  socket.on("message", (msg) => {
+    socket.broadcast.emit("message", msg);
+  });
+
+  // When a socket disconnects
+  socket.on("disconnect", () => {
+    onlineUsersCount--; // Decrement the online users count
+    io.emit("updateUserCount", onlineUsersCount);
+  });
+});

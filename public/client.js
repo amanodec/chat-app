@@ -7,6 +7,10 @@ do {
   name = prompt("Please enter your name");
 } while (!name);
 
+socket.on("updateUserCount", (count) => {
+  const onlineUsersCountElement = document.getElementById("onlineUsersCount");
+  onlineUsersCountElement.textContent = count;
+});
 const modalbtn = document.querySelector(".modal");
 const okbtn = document.querySelector(".okbtn");
 const section = document.querySelector(".chat__section");
@@ -109,20 +113,48 @@ document.querySelector("#btn").addEventListener("click", (e) => {
 
 // message sending logic
 let messageArea = document.querySelector(".message__area");
+let values = {};
 // Function to send message
 function sendMessage(message) {
-  let msg = {
-    user: name,
-    message: message.trim(),
-  };
+  const text = message.trim();
+  if (text.startsWith("/rem ")) {
+    const args = text.substring(5).split(" ");
+    const command = args[0];
+    if (args.length > 1) {
+      const value = args.slice(1).join(" ");
+      values[command] = value;
+      textarea.value = "";
+      alert(`Set ${command} to ${value}`);
+    } else if (command in values) {
+      const value = values[command];
+      textarea.value = "";
+      appendMessage({ user: "You", message: value }, "outgoing");
+    } else {
+      textarea.value = "";
+      alert("No value set for " + command);
+    }
+  } else if (text.startsWith("/calc ")) {
+    const expression = text.substring(6);
+    try {
+      const result = eval(expression);
+      textarea.value = "";
+      appendMessage({ user: "You", message: `${result}` }, "outgoing");
+    } catch (error) {
+      textarea.value = "";
+      appendMessage({ user: "You", message: "Invalid expression" }, "outgoing");
+    }
+  } else {
+    let msg = {
+      user: name,
+      message: message.trim(),
+    };
 
-  //   Append the message to the chat
-  appendMessage(msg, "outgoing");
-  scrollToBottom();
-  textarea.value = "";
+    appendMessage(msg, "outgoing");
+    scrollToBottom();
+    textarea.value = "";
 
-  //   Send to Server
-  socket.emit("message", msg);
+    socket.emit("message", msg);
+  }
 }
 
 // Function to append message
